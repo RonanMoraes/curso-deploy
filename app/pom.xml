@@ -12,13 +12,14 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
+ 
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
+
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
         <dependency>
@@ -36,10 +37,14 @@
             <artifactId>primefaces</artifactId>
             <version>7.0.RC3</version>
         </dependency>
-
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.7.0</version>
+        </dependency>
 
     </dependencies>
-     <repositories>
+    <repositories>
         <repository>
             <id>prime-repo</id>
             <name>PrimeFaces Maven Repository</name>
@@ -48,7 +53,20 @@
     </repositories>
     <build>
         <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8180/manager/text</url>
+                    <path>/${project.build.finalName}</path>
+                    <username>admin</username>
+                    <password>admin</password>
+                    <update>true</update>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-
 
 </project>
