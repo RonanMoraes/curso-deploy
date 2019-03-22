@@ -47,6 +47,21 @@
             <url>http://localhost:8081/artifactory/libs-release</url>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Local Artifactory Lib Releases</name>
+            <url>http://localhost:8081/artifactory/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <resources>
@@ -126,6 +141,11 @@
                             <url>http://localhost:8180/manager/text</url>
 
                         </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <version>3.6.0.1398</version>
                     </plugin>
                 </plugins>
             </build>
